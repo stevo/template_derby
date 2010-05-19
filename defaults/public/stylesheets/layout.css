@@ -1,0 +1,29 @@
+/* layout.css - all layout styles without content part */
+
+body {
+    width: 1000px;
+    margin: auto;
+    padding: 0px;
+    font-family: Trebuchet MS, Tahoma;
+    font-size: 11px;
+}
+
+/* ------ [ MESSAGE BLOCK ] ------ */
+
+div#message_block ul
+{
+    display:block;
+    border: 2px solid #3F4447;
+    padding: 2px;
+    text-indent: 10px;
+}
+
+div#message_block ul.notice
+{
+    background:#CEFF7F;
+}
+
+div#message_block ul.error
+{
+    background: #FFD86F;
+}

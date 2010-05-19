@@ -1,0 +1,195 @@
+<% load (File.join(File::expand_path(RAILS_ROOT),'config','tderby.rb'))-%>
+
+/* WARNING : THIS IS DYNAMICALLY GENERATED FILE!!! PLEASE EDIT APPROPRIATE RCSS TEMPLATE!! */
+
+/* GENERAL YUI RESET */
+body{color:#000;background:#FFF;}
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup,sub{line-height:-1px;vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+body{font:13px/1.22 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
+pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:99%;}
+
+div{display:block;position:relative;overflow:hidden;margin: 0px;padding: 0px;}
+
+
+
+/*** TAG RELATED ***/
+
+.fltr
+{float:right;}
+.fltl
+{float:left;}
+.clb
+{clear:both;height:0px;}
+.clbb
+{clear:both;}
+.lbc
+{margin: 0 auto;}
+div.block
+{display:block ! important;position:relative ! important;overflow:hidden ! important;}
+
+/*** LAYOUT DEFINITION ***/
+.rt,.rm,.rb{_height: 100%;}
+.clc{width: <%= $layout_width %>px;}
+
+.cl
+{
+width: <%= $left_column_width %>px;
+float:left;
+margin: 0px <%=$columns_margin-%>px 0px 0px;
+overflow: visible;
+z-index: 1000;
+}
+
+.cm_full
+{
+float:left;
+width:100%;
+}
+
+.cm_wide
+{
+float:left;
+width:<%= ($layout_width-$columns_margin-($right_column_width>$left_column_width ? $right_column_width : $left_column_width))-%>px;
+margin: 0px;
+}
+
+.cm_narrow
+{
+float:left;
+width:<%= $layout_width-(2*$columns_margin)-$left_column_width-$right_column_width -%>px;
+}
+
+.cr
+{
+width: <%= $right_column_width %>px;
+float:left;
+margin: 0px 0px 0px <%=$columns_margin%>px;
+}
+
+/*** DRYML frames ***/
+
+<% $frames.each do  |frame| -%>
+.frame_<%= frame[:name].strip %>
+{
+margin: 0px 0px 0px 0px;
+}
+
+.frame_<%= frame[:name].strip %> .frame_header
+{
+height:<%= frame[:height] %>px;
+background:  url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') top left no-repeat;
+}
+
+.frame_<%= frame[:name].strip %> .frame_header .left
+{
+padding: 3px 0px 0px <%= frame[:width] %>px;
+}
+
+.frame_<%= frame[:name].strip %> .frame_header .right
+{
+position: absolute;
+height:<%= frame[:height] %>px;
+width:<%= frame[:width] %>px;
+top:0px;
+right:0px;
+_right: -1px;
+background:  url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') top right no-repeat;
+}
+
+.frame_<%= frame[:name].strip %> .not_ultrasized
+{
+background:  url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') center right no-repeat;
+}
+
+.frame_<%= frame[:name].strip %> .not_ultrasized .frame_content
+{
+background:  url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') center left no-repeat;
+}
+
+.frame_<%= frame[:name].strip %> .frame_content
+{
+padding: 0px 0px 0px 0px;
+margin: 0px <%= frame[:width] %>px 0px 0px;
+}
+
+.frame_<%= frame[:name].strip %> .frame_content .left_container
+{
+_height: 100%;
+margin: 0px 0px 0px <%= frame[:width] %>px;
+}
+
+<% unless frame[:footer_height]==0 -%>
+.frame_<%= frame[:name].strip %> .frame_footer
+{
+height: <%= frame[:footer_height] || frame[:height] %>px;
+width:100%;
+background: url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') bottom left no-repeat;
+}
+
+.frame_<%= frame[:name].strip %> .frame_footer .left
+{
+position: relative;
+height: <%= frame[:footer_height] || frame[:height] %>px;
+width: <%= frame[:footer_width] || frame[:width] %>px;
+float:right;
+background: url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') bottom right no-repeat;
+/*
+_margin:-1px 0px 0px 0px;
+//margin:-1px 0px 0px 0px;
+*/
+}
+<% else -%>
+.frame_<%= frame[:name].strip %> .frame_footer
+{
+width:100%;
+height:0px;
+}
+<% end -%>
+
+<% if  frame[:allow_ultrasize] -%>
+/* ULTRA HIGH */
+.frame_<%= frame[:name].strip %> .fcc .uhr,
+.frame_<%= frame[:name].strip %> .fcc .uhr2,
+.frame_<%= frame[:name].strip %> .fcc .uhr3,
+.frame_<%= frame[:name].strip %> .fcc .uhl,
+.frame_<%= frame[:name].strip %> .fcc .uhl2,
+.frame_<%= frame[:name].strip %> .fcc .uhl3
+{
+position:absolute;
+height:<%=$max_inner_image_height_for_ultrasized_frames%>px;width:<%= frame[:width] %>px;
+right: 0px;top: 0px;
+background:url('/images/layout/frames/frame_<%= frame[:name].strip %>.<%= frame[:image_extension] || 'png' %>') center right;
+z-index:-1;
+}
+
+.frame_<%= frame[:name].strip %> .fcc .uhl,
+.frame_<%= frame[:name].strip %> .fcc .uhl2,
+.frame_<%= frame[:name].strip %> .fcc .uhl3
+{
+left: 0px;
+background-position: center left;
+}
+
+.frame_<%= frame[:name].strip %> .fcc .uhl2,
+.frame_<%= frame[:name].strip %> .fcc .uhr2
+{
+top: <%=$max_inner_image_height_for_ultrasized_frames%>px;
+}
+
+.frame_<%= frame[:name].strip %> .fcc .uhl3,
+.frame_<%= frame[:name].strip %> .fcc .uhr3
+{
+top: <%=$max_inner_image_height_for_ultrasized_frames*2%>px;
+}
+<% end -%>
+<% end -%>

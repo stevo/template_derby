@@ -1,0 +1,7 @@
+<def tag="lbuilder_layout">
+  <div class="clc" style="clear:both;">
+    <% %w(t m b).each do |row_code| %>
+        <%= render :partial => "/layouts/row", :locals => {:row_code => row_code} %>
+    <% end %>
+  </div>
+</def>

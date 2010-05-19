@@ -1,0 +1,13 @@
+= TemplateDerby
+
+TemplateDerby extends ERB template handler with a small subset of HOBO's DRYML functionalities + adds some small extensions facilitating layout/views assembly
+
+* Parametrized content
+* Self defined tags
+* Simple tabular navigation handling
+* Dynamic CSS generation (to be rewritten in some parts)
+
+
+= Usage
+
+TODO

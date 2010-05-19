@@ -1,0 +1,13 @@
+<% l, c, r = %w(l c r).map{|column| (yield (("column_"+row_code+column).to_sym))} %>
+<div class="r_<%= row_code %>">
+  <%- unless l.blank? -%>
+      <div class="cl"><%= l %></div>
+  <%- end -%>
+  <%- unless c.blank? -%>
+      <%- cls = (l and r) ? "narrow" : (l or r) ? "wide" : "full" %>
+      <div class="cm_<%= cls %>"><%= c %></div>
+  <%- end -%>
+  <%- unless r.blank? -%>
+      <div class="cr"><%= r %></div>
+  <%- end -%>
+</div>
